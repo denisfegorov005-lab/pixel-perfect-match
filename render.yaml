@@ -1,5 +1,9 @@
-import { defineNitroConfig } from 'nitropack/config'
-
-export default defineNitroConfig({
-  preset: 'render_com'
-})
+services:
+  - type: web
+    name: pixel-perfect-match
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: node .output/server/index.mjs
+    envVars:
+      - key: NITRO_PRESET
+        value: render_com
