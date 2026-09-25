@@ -14,13 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      readings: {
+        Row: {
+          created_at: string
+          extra: Json | null
+          id: number
+          station_id: string
+          ts: string
+          value: number
+        }
+        Insert: {
+          created_at?: string
+          extra?: Json | null
+          id?: number
+          station_id?: string
+          ts: string
+          value: number
+        }
+        Update: {
+          created_at?: string
+          extra?: Json | null
+          id?: number
+          station_id?: string
+          ts?: string
+          value?: number
+        }
+        Relationships: []
+      }
+      stations: {
+        Row: {
+          created_at: string
+          name: string
+          sample_rate_hz: number
+          station_id: string
+        }
+        Insert: {
+          created_at?: string
+          name?: string
+          sample_rate_hz?: number
+          station_id: string
+        }
+        Update: {
+          created_at?: string
+          name?: string
+          sample_rate_hz?: number
+          station_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      purge_old_readings: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
