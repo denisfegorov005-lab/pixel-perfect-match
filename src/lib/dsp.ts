@@ -93,3 +93,28 @@ export function buildSpectrogram(
   const maxDb = max > 0 ? 20 * Math.log10(max) : 0;
   return { columns, maxDb, minDb: maxDb - 60 };
 }
+
+/** Intensity (0..1) -> rgb, light background friendly ramp: white -> blue -> dark. */
+export function intensityColor(v: number): [number, number, number] {
+  const t = Math.max(0, Math.min(1, v));
+  const stops: Array<[number, [number, number, number]]> = [
+    [0, [255, 255, 255]],
+    [0.25, [204, 224, 245]],
+    [0.5, [96, 150, 215]],
+    [0.75, [27, 65, 150]],
+    [1, [10, 15, 45]],
+  ];
+  for (let i = 0; i < stops.length - 1; i++) {
+    const [p0, c0] = stops[i]!;
+    const [p1, c1] = stops[i + 1]!;
+    if (t >= p0 && t <= p1) {
+      const f = (t - p0) / (p1 - p0);
+      return [
+        Math.round(c0[0] + (c1[0] - c0[0]) * f),
+        Math.round(c0[1] + (c1[1] - c0[1]) * f),
+        Math.round(c0[2] + (c1[2] - c0[2]) * f),
+      ];
+    }
+  }
+  return [10, 15, 45];
+}
