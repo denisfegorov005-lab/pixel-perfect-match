@@ -67,6 +67,34 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_seismogram: {
+        Args: {
+          p_buckets?: number
+          p_from: string
+          p_station: string
+          p_to: string
+        }
+        Returns: {
+          avg_value: number
+          bucket_ts: string
+          max_value: number
+          min_value: number
+          sample_count: number
+        }[]
+      }
+      get_spectrogram_windows: {
+        Args: {
+          p_from: string
+          p_max_windows?: number
+          p_station: string
+          p_to: string
+          p_window_seconds?: number
+        }
+        Returns: {
+          vals: number[]
+          window_ts: string
+        }[]
+      }
       purge_old_readings: { Args: never; Returns: undefined }
     }
     Enums: {
