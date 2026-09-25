@@ -6,7 +6,7 @@ import { z } from "zod";
  *
  *   POST /api/public/ingest
  *   Headers: Content-Type: application/json
- *            x-api-key: <SEISMO_INGEST_KEY>
+ *            x-api-key: 0987654321JSDP
  *
  * Single sample:
  *   { "station_id": "station-1", "timestamp": "2026-09-25T07:00:00.000Z", "value": 123.4 }
