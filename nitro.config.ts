@@ -1,5 +1,5 @@
-import { defineNitroConfig } from 'nitropack/config'
+import { defineConfig } from 'nitro'
 
-export default defineNitroConfig({
+export default defineConfig({
   preset: 'render_com'
 })
