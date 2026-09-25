@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: pixel-perfect-match # Можно изменить на любое другое имя
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: node .output/server/index.mjs
+    envVars:
+      - key: NITRO_PRESET
+        value: render_com # Именно это заставит Nitro собрать проект под Render
