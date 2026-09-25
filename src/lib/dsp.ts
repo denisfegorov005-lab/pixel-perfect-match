@@ -93,6 +93,3 @@ export function buildSpectrogram(
   const maxDb = max > 0 ? 20 * Math.log10(max) : 0;
   return { columns, maxDb, minDb: maxDb - 60 };
 }
-
-/** Perceptual blue-to-warm color ramp for spectrogram intensity (0..1). */
-const RAMP: Array<[number, number, number]] = [] as never;
